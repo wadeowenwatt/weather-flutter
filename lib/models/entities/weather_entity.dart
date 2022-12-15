@@ -1,21 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'current.dart';
-
 part 'weather_entity.g.dart';
 
 @JsonSerializable()
 class WeatherEntity {
   @JsonKey()
-  double? lat;
+  int? id;
   @JsonKey()
-  double? lon;
+  String? main;
   @JsonKey()
-  String? timezone;
-  @JsonKey(name: 'timezone_offset')
-  String? timezoneOffset;
+  String? description;
+  @JsonKey()
+  String? icon;
 
-  WeatherEntity({this.lat, this.lon, this.timezone, this.timezoneOffset});
+  WeatherEntity({this.id, this.main, this.description, this.icon});
 
   factory WeatherEntity.fromJson(Map<String, dynamic> json) => _$WeatherEntityFromJson(json);
 

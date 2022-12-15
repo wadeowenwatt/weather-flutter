@@ -15,4 +15,5 @@ class AppConfig {
 
 class WeatherApiConfig {
   static const String apiKey = "2f1f308ae7e8589c60232d6f42aa9631";
+  static const String exclude = "minutely,hourly,alerts,daily";
 }

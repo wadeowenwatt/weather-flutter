@@ -8,16 +8,16 @@ part of 'weather_entity.dart';
 
 WeatherEntity _$WeatherEntityFromJson(Map<String, dynamic> json) =>
     WeatherEntity(
-      lat: (json['lat'] as num?)?.toDouble(),
-      lon: (json['lon'] as num?)?.toDouble(),
-      timezone: json['timezone'] as String?,
-      timezoneOffset: json['timezone_offset'] as String?,
+      id: json['id'] as int?,
+      main: json['main'] as String?,
+      description: json['description'] as String?,
+      icon: json['icon'] as String?,
     );
 
 Map<String, dynamic> _$WeatherEntityToJson(WeatherEntity instance) =>
     <String, dynamic>{
-      'lat': instance.lat,
-      'lon': instance.lon,
-      'timezone': instance.timezone,
-      'timezone_offset': instance.timezoneOffset,
+      'id': instance.id,
+      'main': instance.main,
+      'description': instance.description,
+      'icon': instance.icon,
     };

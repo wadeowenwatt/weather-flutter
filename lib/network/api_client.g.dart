@@ -19,21 +19,23 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<List<WeatherEntity>> getAllData(
+  Future<OneCallEntity> getAllData(
     lat,
     lon,
+    exclude,
     apiKey,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'lat': lat,
       r'lon': lon,
+      r'exclude': exclude,
       r'appid': apiKey,
     };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<WeatherEntity>>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<OneCallEntity>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -45,9 +47,7 @@ class _ApiClient implements ApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => WeatherEntity.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = OneCallEntity.fromJson(_result.data!);
     return value;
   }
 
