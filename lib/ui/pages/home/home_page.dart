@@ -1,22 +1,12 @@
-import 'package:call_api_weather/models/enums/load_status.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:call_api_weather/repositories/weather_repository.dart';
+import 'package:flutter/cupertino.dart';
 
-import 'home_state.dart';
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-class HomeCubit extends Cubit<HomeState> {
-  WeatherRepository weatherRepo;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
 
-  HomeCubit({required this.weatherRepo}) : super(const HomeState());
-  
-  void fetchInitialWeather() async {
-    emit(state.copyWith(loadWeatherStatus: LoadStatus.loading));
-    try {
-      final result = await weatherRepo.getWeather(lat: 91, lon: 91);
-      emit(state.copyWith(
-        loadWeatherStatus: LoadStatus.success,
-        weathers: result.
-      ));
-    }
+    );
   }
 }
